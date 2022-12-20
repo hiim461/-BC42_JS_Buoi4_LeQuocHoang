@@ -477,7 +477,7 @@ document.getElementById('btn-B7').onclick = function () {
     if (number < 0) {
         number = Math.abs(number);
         donVi = number % 10;
-        chuc = (number % 100) % 10;
+        chuc = Math.floor((number % 100)/10) ;
         tram = Math.floor(number / 100);
         if (tram !== 0) {
             switch (tram) {
@@ -584,7 +584,7 @@ document.getElementById('btn-B7').onclick = function () {
         }
     } else {
         donVi = number % 10;
-        chuc = (number % 100) % 10;
+        chuc = Math.floor((number % 100)/10) ;
         tram = Math.floor(number / 100);
         if (tram !== 0) {
             switch (tram) {
