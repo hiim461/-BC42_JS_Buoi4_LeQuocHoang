@@ -169,7 +169,7 @@ document.getElementById('btnHomQua-B5').onclick = function () {
 
     // progress :
     let sai = 'Dữ liệu không hợp lệ!!!';
-    if (year > 1919 && date > 0 && month > 0 && date < 32 && month < 13 && (year%1)===0 && (month%1)===0 && (date%1)===0) {
+    if (year > 1919 && date > 0 && month > 0 && date < 32 && month < 13 && (year % 1) === 0 && (month % 1) === 0 && (date % 1) === 0) {
 
         if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) {
             //nhuận
@@ -324,7 +324,7 @@ document.getElementById('btnHomQua-B5').onclick = function () {
         }
     }
     else {
-        if (date > 0 && month > 0 && date < 32 && month < 13 && year<1920) {
+        if (date > 0 && month > 0 && date < 32 && month < 13 && year < 1920) {
             result = 'Năm phải từ 1920 trở về sau';
         }
     }
@@ -346,7 +346,7 @@ document.getElementById('btnMai-B5').onclick = function () {
 
     //progress:
     let sai = 'Dữ liệu không hợp lệ!!!';
-    if (year > 1919 && date > 0 && month > 0 && date < 32 && month < 13 && (year%1)===0 && (month%1)===0 && (date%1)===0 ) {
+    if (year > 1919 && date > 0 && month > 0 && date < 32 && month < 13 && (year % 1) === 0 && (month % 1) === 0 && (date % 1) === 0) {
         if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
             //tháng 31 ngày
             if (date > 31) {
@@ -373,8 +373,8 @@ document.getElementById('btnMai-B5').onclick = function () {
                     result = date + '/' + month + '/' + year;
                 }
             }
-        } else{
-            if (month===4 && month===6 && month===9 && month===11){
+        } else {
+            if (month === 4 && month === 6 && month === 9 && month === 11) {
                 if (date > 30) {
                     result = sai;
                 } else {
@@ -386,8 +386,8 @@ document.getElementById('btnMai-B5').onclick = function () {
                     }
                     result = date + '/' + month + '/' + year;
                 }
-            } else{ //tháng 2 nhuận
-                if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)){
+            } else { //tháng 2 nhuận
+                if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) {
                     if (date > 29) {
                         result = sai;
                     } else {
@@ -417,7 +417,7 @@ document.getElementById('btnMai-B5').onclick = function () {
         }
 
     } else {
-        if (date > 0 && month > 0 && date < 32 && month < 13 && year<1920) {
+        if (date > 0 && month > 0 && date < 32 && month < 13 && year < 1920) {
             result = 'Năm phải từ 1920 trở về sau';
         }
     }
@@ -433,22 +433,23 @@ document.getElementById('btn-B6').onclick = function () {
     let result = '';
 
     // progress :
-    if (month>0 && year>1919 && month<13 && (year%1)===0 && (month%1)===0) { if (month===1 && month===3 && month===5 && month===7 && month===8 && month===10 && month===12){
-        result = 'Tháng ' + month + ' năm ' + year + ' có 31 ngày!!!';
-    } else {
-        if (month===4 && month===6 && month===9 && month===11){
-            result = 'Tháng ' + month + ' năm ' + year + ' có 30 ngày!!!';
+    if (month > 0 && year > 1919 && month < 13 && (year % 1) === 0 && (month % 1) === 0) {
+        if (month === 1 && month === 3 && month === 5 && month === 7 && month === 8 && month === 10 && month === 12) {
+            result = 'Tháng ' + month + ' năm ' + year + ' có 31 ngày!!!';
         } else {
-            if((year%4)===0 && (year%100)!==0 || (year%400)===0){
-                result = 'Tháng ' + month + ' năm ' + year + ' có 29 ngày!!!';
+            if (month === 4 && month === 6 && month === 9 && month === 11) {
+                result = 'Tháng ' + month + ' năm ' + year + ' có 30 ngày!!!';
             } else {
-                result = 'Tháng ' + month + ' năm ' + year + ' có 28 ngày!!!';
+                if ((year % 4) === 0 && (year % 100) !== 0 || (year % 400) === 0) {
+                    result = 'Tháng ' + month + ' năm ' + year + ' có 29 ngày!!!';
+                } else {
+                    result = 'Tháng ' + month + ' năm ' + year + ' có 28 ngày!!!';
+                }
             }
         }
-    }
 
     } else {
-        if (year<1920){
+        if (year < 1920) {
             result = 'Cần nhập năm từ 1920';
         } else {
             result = 'Dữ liệu không hợp lệ';
@@ -459,4 +460,239 @@ document.getElementById('btn-B6').onclick = function () {
 }
 
 //Bài 7:
+document.getElementById('btn-B7').onclick = function () {
+    // input : number : number
+    let number = +document.getElementById('number-B7').value;
+
+    // output : result: string
+    result = '';
+
+    // progress :
+    let tram = 0;
+    let chuc = 0;
+    let donVi = 0;
+    let docTram = '';
+    let docChuc = '';
+    let docDonVi = '';
+    if (number < 0) {
+        number = Math.abs(number);
+        donVi = number % 10;
+        chuc = (number % 100) % 10;
+        tram = Math.floor(number / 100);
+        if (tram !== 0) {
+            switch (tram) {
+                case 1: {
+                    docTram = 'một trăm';
+                }; break;
+                case 2: {
+                    docTram = 'hai trăm';
+                }; break;
+                case 3: {
+                    docTram = 'ba trăm';
+                }; break;
+                case 4: {
+                    docTram = 'bốn trăm';
+                }; break;
+                case 5: {
+                    docTram = 'năm trăm';
+                }; break;
+                case 6: {
+                    docTram = 'sáu trăm';
+                }; break;
+                case 7: {
+                    docTram = 'bảy trăm';
+                }; break;
+                case 8: {
+                    docTram = 'tám trăm';
+                }; break;
+                case 9: {
+                    docTram = 'chín trăm';
+                }; break;
+            }
+            switch (chuc) {
+                case 0: {
+                    docChuc = ' lẻ';
+                }
+                case 1: {
+                    docChuc = ' mười';
+                }; break;
+                case 2: {
+                    docChuc = ' hai mươi';
+                }; break;
+                case 3: {
+                    docChuc = ' ba mươi';
+                }; break;
+                case 4: {
+                    docChuc = ' bốn mươi';
+                }; break;
+                case 5: {
+                    docChuc = ' năm mươi';
+                }; break;
+                case 6: {
+                    docChuc = ' sáu mươi';
+                }; break;
+                case 7: {
+                    docChuc = ' bảy mươi';
+                }; break;
+                case 8: {
+                    docChuc = ' tám mươi';
+                }; break;
+                case 9: {
+                    docChuc = 'chín mươi';
+                }; break;
+            }
+            switch (donVi){
+                case 0: {
+                    docDonVi = '';
+                }
+                case 1: {
+                    docDonVi = ' một.';
+                }; break;
+                case 2: {
+                    docDonVi = ' hai.';
+                }; break;
+                case 3: {
+                    docDonVi = ' ba.';
+                }; break;
+                case 4: {
+                    docDonVi = ' bốn.';
+                }; break;
+                case 5: {
+                    docDonVi = ' năm.';
+                }; break;
+                case 6: {
+                    docDonVi = ' sáu.';
+                }; break;
+                case 7: {
+                    docDonVi = ' bảy.';
+                }; break;
+                case 8: {
+                    docDonVi = ' tám.';
+                }; break;
+                case 9: {
+                    docDonVi = 'chín.';
+                }; break;
+            }
+            if (chuc===0 && donVi===0){
+                result = 'Âm ' + docTram + ' chẵn.';
+            }
+            else{
+                result = 'Âm ' + docTram + ' ' + docChuc + ' ' + docDonVi;
+            }
+        } else {
+            result = 'Dữ liệu không hợp lệ!'
+        }
+    } else {
+        donVi = number % 10;
+        chuc = (number % 100) % 10;
+        tram = Math.floor(number / 100);
+        if (tram !== 0) {
+            switch (tram) {
+                case 1: {
+                    docTram = 'Một trăm';
+                }; break;
+                case 2: {
+                    docTram = 'Hai trăm';
+                }; break;
+                case 3: {
+                    docTram = 'Ba trăm';
+                }; break;
+                case 4: {
+                    docTram = 'Bốn trăm';
+                }; break;
+                case 5: {
+                    docTram = 'Năm trăm';
+                }; break;
+                case 6: {
+                    docTram = 'Sáu trăm';
+                }; break;
+                case 7: {
+                    docTram = 'Bảy trăm';
+                }; break;
+                case 8: {
+                    docTram = 'Tám trăm';
+                }; break;
+                case 9: {
+                    docTram = 'Chín trăm';
+                }; break;
+            }
+            switch (chuc) {
+                case 0: {
+                    docChuc = ' lẻ';
+                }
+                case 1: {
+                    docChuc = ' mười';
+                }; break;
+                case 2: {
+                    docChuc = ' hai mươi';
+                }; break;
+                case 3: {
+                    docChuc = ' ba mươi';
+                }; break;
+                case 4: {
+                    docChuc = ' bốn mươi';
+                }; break;
+                case 5: {
+                    docChuc = ' năm mươi';
+                }; break;
+                case 6: {
+                    docChuc = ' sáu mươi';
+                }; break;
+                case 7: {
+                    docChuc = ' bảy mươi';
+                }; break;
+                case 8: {
+                    docChuc = ' tám mươi';
+                }; break;
+                case 9: {
+                    docChuc = 'chín mươi';
+                }; break;
+            }
+            switch (donVi){
+                case 0: {
+                    docDonVi = '';
+                }
+                case 1: {
+                    docDonVi = ' một.';
+                }; break;
+                case 2: {
+                    docDonVi = ' hai.';
+                }; break;
+                case 3: {
+                    docDonVi = ' ba.';
+                }; break;
+                case 4: {
+                    docDonVi = ' bốn.';
+                }; break;
+                case 5: {
+                    docDonVi = ' năm.';
+                }; break;
+                case 6: {
+                    docDonVi = ' sáu.';
+                }; break;
+                case 7: {
+                    docDonVi = ' bảy.';
+                }; break;
+                case 8: {
+                    docDonVi = ' tám.';
+                }; break;
+                case 9: {
+                    docDonVi = 'chín.';
+                }; break;
+            }
+            if (chuc===0 && donVi===0){
+                result = docTram + ' chẵn.';
+            }
+            else{
+                result = docTram + ' ' + docChuc + ' ' + docDonVi;
+            }
+        } else {
+            result = 'Dữ liệu không hợp lệ!'
+        }
+    
+
+    }
+    document.getElementById('result-B7').innerHTML = result;
+}
+
 
