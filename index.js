@@ -97,7 +97,7 @@ document.getElementById('btn-B3').onclick = function () {
 }
 
 // Bài 4: 
-document.getElementById('btn-B4').onclick = function (){
+document.getElementById('btn-B4').onclick = function () {
     // input: canh1. canh2, canh 3: number
     let canh1 = +document.getElementById('canh1-B4').value;
     let canh2 = +document.getElementById('canh2-B4').value;
@@ -105,53 +105,358 @@ document.getElementById('btn-B4').onclick = function (){
 
     // output : result: string
     let result = '';
-    result = 'Đây là tam giác ' ;
-     
+    result = 'Đây là tam giác ';
+
     //progress:
     let vuong = '';
     let can = '';
     let deu = '';
-    if (canh1>0 && canh2>0 && canh3>0 && (canh1+canh2)>canh3 && (canh2+canh3)>canh1 && (canh1+canh3)>canh2){
-        if (canh1===canh2 && canh2===canh3){ //11
+    if (canh1 > 0 && canh2 > 0 && canh3 > 0 && (canh1 + canh2) > canh3 && (canh2 + canh3) > canh1 && (canh1 + canh3) > canh2) {
+        if (canh1 === canh2 && canh2 === canh3) { //11
             deu = 'đều'
             result += deu;
         } else { // 00 01 10
-            if (canh1 === canh2){ //10
+            if (canh1 === canh2) { //10
                 can = 'cân';
-                if(canh3 ** 2 === canh1 ** 2 + canh2 ** 2){
+                if (canh3 ** 2 === canh1 ** 2 + canh2 ** 2) {
                     vuong = 'vuông';
                     result += vuong + can;
-                } else{
+                } else {
                     result += can;
                 }
             } else { // 00 01
-                if (canh2 === canh3){ //01
+                if (canh2 === canh3) { //01
                     can = 'cân';
-                    if (canh1**2 === canh2**2 + canh3**2){
+                    if (canh1 ** 2 === canh2 ** 2 + canh3 ** 2) {
                         vuong = 'vuông';
                         result += vuong + can;
                     } else {
                         result = can;
                     }
                 } else {//00
-                    if (canh1===canh3){ 
+                    if (canh1 === canh3) {
                         can = 'cân';
-                        vuong = canh2**2 === canh1**2 + canh3**2 ? 'vuông' : '';
+                        vuong = canh2 ** 2 === canh1 ** 2 + canh3 ** 2 ? 'vuông' : '';
                         result += vuong + can;
-                    } else{
-                        if(canh1**2===(canh2**2 + canh3**2) || canh2**2===(canh1**2 + canh3**2) || canh3**2===(canh1**2 + canh2**2)){
+                    } else {
+                        if (canh1 ** 2 === (canh2 ** 2 + canh3 ** 2) || canh2 ** 2 === (canh1 ** 2 + canh3 ** 2) || canh3 ** 2 === (canh1 ** 2 + canh2 ** 2)) {
                             vuong = 'vuông';
                             result += vuong;
-                        } else{
+                        } else {
                             result += 'bình thường';
                         }
                     }
                 }
             }
         }
-    } else{
+    } else {
         result = 'Tam giác này không tồn tại!!!';
     }
-   document.getElementById('result-B4').innerHTML = result + '!!!'; 
+    document.getElementById('result-B4').innerHTML = result + '!!!';
 
 }
+
+// Bài 5 :
+document.getElementById('btnHomQua-B5').onclick = function () {
+    //input: date, month, year: number
+    let date = +document.getElementById('date-B5').value;
+    let month = +document.getElementById('month-B5').value;
+    let year = +document.getElementById('year-B5').value;
+
+    // output : result: string
+    let result = '';
+    result = 'Dữ liệu không hợp lệ!!!';
+
+    // progress :
+    let sai = 'Dữ liệu không hợp lệ!!!';
+    if (year > 1919 && date > 0 && month > 0 && date < 32 && month < 13 && (year%1)===0 && (month%1)===0 && (date%1)===0) {
+
+        if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) {
+            //nhuận
+            if (month === 2) {
+                if (date > 29) {
+                    result = sai;
+                } else {
+                    if (date === 1) {
+                        date = 31;
+                        month--;
+                    } else {
+                        date--;
+                    }
+                    result = date + '/' + month + '/' + year;
+                }
+            } else {
+                if (month === 4 || month === 6 || month === 9 || month === 11) { //tháng 30 ngày
+                    if (date > 30) {
+                        result = sai;
+
+                    } else {
+                        if (date === 1) {
+                            date = 31;
+                            month--;
+                        } else {
+                            date--;
+                        }
+                        result = date + '/' + month + '/' + year;
+                    }
+                } else { //tháng 31 ngày
+                    if (date > 31) {
+                        result = sai;
+                    } else {
+                        if (month === 3) {
+                            if (date === 1) {
+                                date = 29;
+                                month--;
+                            } else {
+                                date--;
+                            }
+                            result = date + '/' + month + '/' + year;
+                        } else {
+                            if (month === 1) {
+                                if (date === 1) {//tháng1: trước:thang 12 có 31 ngay
+                                    date = 31;
+                                    month = 12;
+                                    year--;
+                                } else {
+                                    date--;
+                                }
+                                result = date + '/' + month + '/' + year;
+                            } else {
+                                if (month === 8) { //tháng truoc: thang 7 có 31 ngày
+                                    if (date === 1) {
+                                        date = 31;
+                                        month--;
+                                    } else {
+                                        date--;
+                                    }
+                                    result = date + '/' + month + '/' + year;
+                                } else { //thang truoc co 30 ngay
+                                    if (date === 1) {
+                                        date = 30;
+                                        month--;
+                                    } else {
+                                        date--;
+                                    }
+                                    result = date + '/' + month + '/' + year;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        } else {
+            //k nhuận
+            if (month === 2) {
+                if (date > 28) {
+                    result = sai;
+                } else {
+                    if (date === 1) {
+                        date = 31;
+                        month--;
+                    } else {
+                        date--;
+                    }
+                    result = date + '/' + month + '/' + year;
+                }
+            } else {
+                if (month === 4 || month === 6 || month === 9 || month === 11) { //tháng 30 ngày
+                    if (date > 30) {
+                        result = sai;
+
+                    } else {
+                        if (date === 1) {
+                            date = 31;
+                            month--;
+                        } else {
+                            date--;
+                        }
+                        result = date + '/' + month + '/' + year;
+                    }
+                } else { //tháng 31 ngày
+                    if (date > 31) {
+                        result = sai;
+                    } else {
+                        if (month === 3) { //tháng trc: 2
+                            if (date === 1) {
+                                date = 28;
+                                month--;
+                            } else {
+                                date--;
+                            }
+                            result = date + '/' + month + '/' + year;
+                        } else {
+                            if (month === 1) {
+                                if (date === 1) {//tháng1: trước:thang 12 có 31 ngay
+                                    date = 31;
+                                    month = 12;
+                                    year--;
+                                } else {
+                                    date--;
+                                }
+                                result = date + '/' + month + '/' + year;
+                            } else {
+                                if (month === 8) { //tháng truoc: thang 7 có 31 ngày
+                                    if (date === 1) {
+                                        date = 31;
+                                        month--;
+                                    } else {
+                                        date--;
+                                    }
+                                    result = date + '/' + month + '/' + year;
+                                } else { //thang truoc co 30 ngay
+                                    if (date === 1) {
+                                        date = 30;
+                                        month--;
+                                    } else {
+                                        date--;
+                                    }
+                                    result = date + '/' + month + '/' + year;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        }
+    }
+    else {
+        if (date > 0 && month > 0 && date < 32 && month < 13 && year<1920) {
+            result = 'Năm phải từ 1920 trở về sau';
+        }
+    }
+
+
+    document.getElementById('result-B5').innerHTML = result;
+}
+
+
+document.getElementById('btnMai-B5').onclick = function () {
+    //input:
+    let date = +document.getElementById('date-B5').value;
+    let month = +document.getElementById('month-B5').value;
+    let year = +document.getElementById('year-B5').value;
+
+    // output : result: string
+    let result = '';
+    result = 'Dữ liệu không hợp lệ!!!';
+
+    //progress:
+    let sai = 'Dữ liệu không hợp lệ!!!';
+    if (year > 1919 && date > 0 && month > 0 && date < 32 && month < 13 && (year%1)===0 && (month%1)===0 && (date%1)===0 ) {
+        if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
+            //tháng 31 ngày
+            if (date > 31) {
+                result = sai;
+            } else {
+                if (month === 12) {
+                    //tháng 12
+                    if (date === 31) {
+                        date = 1;
+                        month = 1;
+                        year++;
+                    } else {
+                        date++;
+                    }
+                    result = date + '/' + month + '/' + year;
+                } else {
+                    //các tháng 31 còn lại
+                    if (date === 31) {
+                        date = 1;
+                        month++;
+                    } else {
+                        date++;
+                    }
+                    result = date + '/' + month + '/' + year;
+                }
+            }
+        } else{
+            if (month===4 && month===6 && month===9 && month===11){
+                if (date > 30) {
+                    result = sai;
+                } else {
+                    if (date === 30) {
+                        date = 1;
+                        month++;
+                    } else {
+                        date++;
+                    }
+                    result = date + '/' + month + '/' + year;
+                }
+            } else{ //tháng 2 nhuận
+                if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)){
+                    if (date > 29) {
+                        result = sai;
+                    } else {
+                        if (date === 29) {
+                            date = 1;
+                            month++
+                        } else {
+                            date++
+                        }
+                        result = date + '/' + month + '/' + year;
+                    }
+                } else {
+                    //tháng 2 k nhuận
+                    if (date > 28) {
+                        result = sai;
+                    } else {
+                        if (date === 28) {
+                            date = 1;
+                            month++
+                        } else {
+                            date++
+                        }
+                        result = date + '/' + month + '/' + year;
+                    }
+                }
+            }
+        }
+
+    } else {
+        if (date > 0 && month > 0 && date < 32 && month < 13 && year<1920) {
+            result = 'Năm phải từ 1920 trở về sau';
+        }
+    }
+    document.getElementById('result-B5').innerHTML = result;
+}
+//Bài 6:
+document.getElementById('btn-B6').onclick = function () {
+    // input : month, year : number
+    let month = +document.getElementById('month-B6').value;
+    let year = +document.getElementById('year-B6').value;
+
+    // output  : result:string
+    let result = '';
+
+    // progress :
+    if (month>0 && year>1919 && month<13 && (year%1)===0 && (month%1)===0) { if (month===1 && month===3 && month===5 && month===7 && month===8 && month===10 && month===12){
+        result = 'Tháng ' + month + ' năm ' + year + ' có 31 ngày!!!';
+    } else {
+        if (month===4 && month===6 && month===9 && month===11){
+            result = 'Tháng ' + month + ' năm ' + year + ' có 30 ngày!!!';
+        } else {
+            if((year%4)===0 && (year%100)!==0 || (year%400)===0){
+                result = 'Tháng ' + month + ' năm ' + year + ' có 29 ngày!!!';
+            } else {
+                result = 'Tháng ' + month + ' năm ' + year + ' có 28 ngày!!!';
+            }
+        }
+    }
+
+    } else {
+        if (year<1920){
+            result = 'Cần nhập năm từ 1920';
+        } else {
+            result = 'Dữ liệu không hợp lệ';
+
+        }
+    }
+    document.getElementById('result-B6').innerHTML = result;
+}
+
+//Bài 7:
+

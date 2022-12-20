@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>JS Buoi 4</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
     <div class="container mt-5">
         <h3>Bài 1: Nhập vào 3 số nguyên, viết chương trình xuất 3 số theo thứ tự tăng dần</h3>
         <input class="form-control w-25 d-inline-block " placeholder="Nhập vào số thứ nhất" id="number1-B1">
@@ -18,7 +21,8 @@
         <button class="btn btn-success mt-3" id="btn-B1">Sắp xếp</button>
         <p class="alert alert-success mt-3" id="result-B1"></p>
         <hr>
-        <h3>Bài 2: Viết chương trình "Chào hỏi" các thành viên trong gia đình với các đặc điểm: Bố, Mẹ, anh Trai, em Gái.</h3>
+        <h3>Bài 2: Viết chương trình "Chào hỏi" các thành viên trong gia đình với các đặc điểm: Bố, Mẹ, anh Trai, em
+            Gái.</h3>
         <div class="form-group">
             <select name="" class="form-control w-25" id="info-B2">
                 <option value="">Chọn thành viên</option>
@@ -31,7 +35,7 @@
 
 
         </div>
-        <p class="alert alert-success"   id="result-B2"></p>
+        <p class="alert alert-success" id="result-B2"></p>
         <hr>
         <h3>Bài 3: Viêt chương trình nhập vào 3 số nguyên, xuất ra màn hình có bao nhiêu số lẻ, cao nhiêu số chẵn</h3>
         <div class="form-group">
@@ -39,7 +43,7 @@
             <input class="form-control d-inline-block w-25 " id="number2-B3" placeholder="Nhập vào số thứ hai">
             <input class="form-control d-inline-block w-25 " id="number3-B3" placeholder="Nhập vào số thứ ba">
         </div>
-        <button class="btn btn-success" id="btn-B3">Tính</button> 
+        <button class="btn btn-success" id="btn-B3">Tính</button>
         <p class="alert alert-success mt-3" id="result-B3"></p>
         <hr>
         <h3>Bài 4: Viết chương trình cho nhập 3 cạnh của tam giác, cho biêt đó là tam giác gì!</h3>
@@ -50,15 +54,46 @@
         </div>
         <button class="btn btn-success" id="btn-B4">Dự đoán</button>
         <p class="alert alert-success mt-3" id="result-B4"></p>
-        
+        <hr>
+        <h3>Bài 5: Viết chương trình nhập vào ngày, tháng, năm (Giả sử nhập đúng, không cần kiểm tra hợp lệ).
+            Tìm ngày, tháng, năm của ngày tiếp theo. Tương tự tìm ngày tháng năm của ngày trước đó.</h3>
+        <div class="form-group">
+            <input class="form-control w-25 d-inline-block" id="date-B5" type="number" placeholder="Nhập ngày">
+            <input class="form-control w-25 d-inline-block" id="month-B5" type="number" placeholder="Nhập tháng">
+            <input class="form-control w-25 d-inline-block" id="year-B5" type="number" placeholder="Nhập năm">
+        </div>
+        <button class="btn btn-success" id="btnHomQua-B5">Ngày hôm qua</button>
+        <button class="btn btn-success" id="btnMai-B5">Ngày mai</button>
+        <p class="alert alert-success mt-3" id="result-B5"></p>
+        <hr>
+        <h3>Bài 6: Viết chương trình nhập vào tháng, năm. Cho biết tháng đó có bao nhiêu ngày. (bao gồm tháng của năm nhuận).</h3>
+        <div class="form-group">
+            <input class="form-control w-25 d-inline-block" id="month-B6" type="number" placeholder="Nhập tháng">
+            <input class="form-control w-25 d-inline-block" id="year-B6" type="number" placeholder="Nhập năm"> <br>
+            <button class="btn btn-success mt-3" id="btn-B6">Tính ngày</button> 
+            <p class="alert alert-success mt-3" id="result-B6"></p>
+        </div> 
+        <hr>
+        <h3>Bài 7: Viết chương trình nhập vào số nguyên có 3 chữ số. In ra cách đọc nó.</h3>
+        <div class="form-group">
+            
+        </div>
+
 
     </div>
-      
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script src="./index.js"></script>
-  </body>
+</body>
+
 </html>
