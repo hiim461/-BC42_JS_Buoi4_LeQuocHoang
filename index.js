@@ -695,4 +695,77 @@ document.getElementById('btn-B7').onclick = function () {
     document.getElementById('result-B7').innerHTML = result;
 }
 
+//Bài 8:
+document.getElementById('btn-B8').onclick = function (){
+    // input: ten: string ; x,y: number 
+    let name1 = document.getElementById('name1-B8').value;
+    let name2 = document.getElementById('name2-B8').value;
+    let name3 = document.getElementById('name3-B8').value;
+
+    let x1 = +document.getElementById('x1-B8').value;
+    let x2 = +document.getElementById('x2-B8').value;
+    let x3 = +document.getElementById('x3-B8').value;
+    let x4 = +document.getElementById('x4-B8').value;
+
+    let y1 = +document.getElementById('y1-B8').value;
+    let y2 = +document.getElementById('y2-B8').value;
+    let y3 = +document.getElementById('y3-B8').value;
+    let y4 = +document.getElementById('y4-B8').value;
+
+    // output : result: string
+    let result = '';
+    
+    // progress 
+    let xy14 = 0;
+    let xy24 = 0;
+    let xy34 = 0;
+
+    xy14 = Math.sqrt( (x1 - x4)**2 + (y1 - y4)**2 );
+    xy24 = Math.sqrt( (x2 - x4)**2 + (y2 - y4)**2 );
+    xy34 = Math.sqrt( (x3 - x4)**2 + (y3 - y4)**2 );
+
+    let maximum = '';
+    if(xy14<xy24){ //xy14<xy24
+        if (xy24<xy34){
+            maximum = name3;
+        } else { // xy24>=xy34
+            if (xy24===xy34){
+                maximum = name2 + ' và ' + name3;
+            } else { // xy24>xy34
+                maximum = name2;
+            }
+        } 
+    } else {
+        // xy14>=xy24
+        if (xy14 === xy24){
+            if (xy14>xy34){
+                maximum = name1 + ' và ' + name2;
+            } else {
+                //xy14<=xy34
+                if (xy14===xy34){
+                    maximum = name1 + ', ' + name2 + ' và ' + name3;
+                } else {
+                    //xy14<xy34
+                    maximum = name3;
+                }
+            }
+        } else {
+            //xy14>xy24
+            if (xy14<xy34) {
+                //xy14<xy34
+                maximum = name3;
+            } else {
+                //xy14>=xy34
+                if (xy14===xy34){
+                    maximum = name1 + ' và ' + name3;
+                } else {
+                    //xy14>xy34
+                    maximum = name1;
+                }
+            }
+        }
+    }
+    result = 'Sinh viên xa trường nhất: ' + maximum;
+    document.getElementById('result-B8').innerHTML = result + '.';
+}
 
